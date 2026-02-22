@@ -1,0 +1,88 @@
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('#primary-nav');
+const form = document.querySelector('.contact-form');
+const status = document.querySelector('.form-status');
+const year = document.querySelector('#year');
+const revealItems = document.querySelectorAll('[data-reveal]');
+const counters = document.querySelectorAll('.counter');
+const tiltItems = document.querySelectorAll('.tilt');
+
+if (year) year.textContent = new Date().getFullYear();
+
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+if (form && status) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      status.textContent = 'Prosím vyplňte všechna povinná pole ve správném formátu.';
+      return;
+    }
+
+    status.textContent = 'Děkujeme, vaše poptávka je připravena k odeslání. Ozveme se co nejdříve.';
+    form.reset();
+  });
+}
+
+const animateCounter = (el) => {
+  const target = Number(el.dataset.target || 0);
+  const duration = 1200;
+  let start;
+
+  const frame = (ts) => {
+    if (!start) start = ts;
+    const progress = Math.min((ts - start) / duration, 1);
+    el.textContent = Math.floor(progress * target).toLocaleString('cs-CZ');
+    if (progress < 1) requestAnimationFrame(frame);
+  };
+
+  requestAnimationFrame(frame);
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.add('is-visible');
+
+    if (entry.target.classList.contains('counter')) {
+      animateCounter(entry.target);
+    }
+
+    obs.unobserve(entry.target);
+  });
+}, { threshold: 0.18 });
+
+revealItems.forEach((item) => observer.observe(item));
+counters.forEach((counter) => observer.observe(counter));
+
+const isTouch = window.matchMedia('(hover: none)').matches;
+if (!isTouch) {
+  tiltItems.forEach((item) => {
+    item.addEventListener('mousemove', (event) => {
+      const box = item.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width;
+      const y = (event.clientY - box.top) / box.height;
+      const rotateY = (x - 0.5) * 8;
+      const rotateX = (0.5 - y) * 8;
+      item.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = '';
+    });
+  });
+}
