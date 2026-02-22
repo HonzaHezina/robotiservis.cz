@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RobotiServis.cz – servis robotických vysavačů, sekaček a domácích robotů po celé ČR." />
-  <title>RobotiServis.cz | Servis robotů</title>
+  <meta name="description" content="RobotiServis.cz – profesionální servis robotických vysavačů, sekaček a domácích robotů po celé ČR." />
+  <title>RobotiServis.cz | Profesionální servis robotů</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
+  <div class="bg-grid" aria-hidden="true"></div>
   <div class="bg-orb orb-1" aria-hidden="true"></div>
   <div class="bg-orb orb-2" aria-hidden="true"></div>
+  <div class="bg-orb orb-3" aria-hidden="true"></div>
   <div class="particles" aria-hidden="true"></div>
 
   <div class="flying-robot" aria-hidden="true">
     <div class="robot-eye eye-left"></div>
     <div class="robot-eye eye-right"></div>
-    <div class="robot-antena"></div>
+    <div class="robot-antenna"></div>
   </div>
 
   <header class="site-header">
@@ -37,27 +39,27 @@
     <section id="uvod" class="hero">
       <div class="container hero-grid">
         <div data-reveal>
-          <p class="eyebrow">Rychlý servis po celé ČR</p>
-          <h1>Profesionální servis robotů bez starostí</h1>
-          <p class="lead typewriter" data-text="Opravujeme robotické vysavače, sekačky a další domácí roboty. Diagnostiku zvládneme do 48 hodin a předem vám pošleme jasnou cenovou nabídku."></p>
+          <p class="eyebrow">Servis robotů nové generace</p>
+          <h1>Rychlý a precizní <span class="highlight">servis všech typů robotů</span></h1>
+          <p class="lead typewriter" data-text="Inspirujeme se moderním stylem, ale držíme se hlavně výsledků: diagnostika do 48 hodin, férová cena před opravou a pečlivé otestování před vrácením."></p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#kontakt">Objednat servis</a>
-            <a class="btn btn-secondary" href="#sluzby">Zjistit více</a>
+            <a class="btn btn-secondary" href="#sluzby">Prohlédnout služby</a>
           </div>
           <div class="kpi-row" data-reveal>
             <div><strong class="counter" data-target="48">0</strong><span>hodin diagnostika</span></div>
-            <div><strong class="counter" data-target="1200">0</strong><span>opravených robotů</span></div>
+            <div><strong class="counter" data-target="1250">0</strong><span>opravených robotů</span></div>
             <div><strong class="counter" data-target="6">0</strong><span>měsíců záruka</span></div>
           </div>
         </div>
 
-        <aside class="hero-card tilt" aria-label="Hlavní benefity" data-reveal>
-          <h2>Proč si vybrat nás</h2>
+        <aside class="hero-card tilt" data-reveal aria-label="Hlavní benefity">
+          <h2>Proč právě RobotiServis.cz</h2>
           <ul>
-            <li>✅ Diagnostika do 48 hodin</li>
-            <li>✅ Originální i ověřené náhradní díly</li>
-            <li>✅ Záruka 6 měsíců na opravu</li>
-            <li>✅ Svoz kurýrem nebo osobní předání</li>
+            <li>✅ Diagnostika zpravidla do 48 hodin</li>
+            <li>✅ Originální i kvalitní alternativní díly</li>
+            <li>✅ Transparentní ceník bez překvapení</li>
+            <li>✅ Svoz kurýrem i osobní předání</li>
           </ul>
         </aside>
       </div>
@@ -72,18 +74,19 @@
           <button class="filter-btn" data-filter="mower" role="tab" aria-selected="false">Sekačky</button>
           <button class="filter-btn" data-filter="diagnostic" role="tab" aria-selected="false">Diagnostika</button>
         </div>
+
         <div class="cards">
           <article class="card tilt" data-reveal data-kind="vacuum">
             <h3>Robotické vysavače</h3>
-            <p>Výměna baterií, opravy motorů, senzorů, kol a základních desek. Čištění po poškození prachem a vlhkostí.</p>
+            <p>Opravy pojezdů, senzorů, motorů, elektroniky, výměny baterií i čištění po zanesení jemným prachem.</p>
           </article>
           <article class="card tilt" data-reveal data-kind="mower">
             <h3>Robotické sekačky</h3>
-            <p>Servis po sezóně, opravy nabíjecích stanic, nožových systémů, pojezdů a aktualizace softwaru.</p>
+            <p>Servis nožových systémů, nabíjecích stanic, pojezdů, aktualizace firmware a posezónní údržba.</p>
           </article>
           <article class="card tilt" data-reveal data-kind="diagnostic">
-            <h3>Diagnostika a údržba</h3>
-            <p>Preventivní prohlídky, kalibrace, čištění a test funkčnosti. Pomáháme prodloužit životnost zařízení.</p>
+            <h3>Diagnostika a prevence</h3>
+            <p>Kompletní test funkčnosti, kalibrace, preventivní prohlídky a doporučení, jak prodloužit životnost robota.</p>
           </article>
         </div>
       </div>
@@ -93,10 +96,10 @@
       <div class="container" data-reveal>
         <h2>Jak probíhá servis</h2>
         <ol class="steps">
-          <li data-reveal><strong>1. Vyplníte formulář</strong><span>Napíšete typ robota a popis závady.</span></li>
-          <li data-reveal><strong>2. Potvrdíme zakázku</strong><span>Ozveme se s návrhem dopravy a termínem diagnostiky.</span></li>
-          <li data-reveal><strong>3. Schválíte cenu</strong><span>Před opravou vždy znáte finální cenu.</span></li>
-          <li data-reveal><strong>4. Vrácení zařízení</strong><span>Robot vám bezpečně vrátíme kurýrem nebo osobně.</span></li>
+          <li data-reveal><strong>1. Vyplníte formulář</strong><span>Napíšete model robota a popíšete závadu.</span></li>
+          <li data-reveal><strong>2. Navrhneme dopravu</strong><span>Domluvíme svoz kurýrem nebo osobní předání.</span></li>
+          <li data-reveal><strong>3. Potvrdíte nabídku</strong><span>Po diagnostice dostanete přesnou cenu opravy.</span></li>
+          <li data-reveal><strong>4. Oprava a testy</strong><span>Po opravě robot důkladně otestujeme a vrátíme.</span></li>
         </ol>
       </div>
     </section>
@@ -110,7 +113,7 @@
           <div class="price-item"><span>Výměna baterie</span><strong>od 1 490 Kč</strong></div>
           <div class="price-item"><span>Oprava elektroniky</span><strong>od 1 990 Kč</strong></div>
         </div>
-        <p class="note">Cena se liší podle značky, modelu a rozsahu poškození. Přesnou částku potvrzujeme po diagnostice.</p>
+        <p class="note">Přesnou cenu vždy potvrzujeme po diagnostice podle značky, modelu a rozsahu poškození.</p>
       </div>
     </section>
 
@@ -118,13 +121,14 @@
       <div class="container contact-grid">
         <div data-reveal>
           <h2>Kontaktujte nás</h2>
-          <p>Potřebujete rychlou radu? Napište nám a ozveme se co nejdříve v pracovní době.</p>
+          <p>Pošlete nám poptávku a během pracovní doby se ozveme s dalším postupem.</p>
           <ul class="contact-list">
             <li><strong>E-mail:</strong> servis@robotiservis.cz</li>
             <li><strong>Telefon:</strong> +420 777 000 111</li>
             <li><strong>Provozní doba:</strong> Po–Pá 8:00–17:00</li>
           </ul>
         </div>
+
         <form class="contact-form tilt" novalidate data-reveal>
           <label for="name">Jméno</label>
           <input id="name" name="name" type="text" required />

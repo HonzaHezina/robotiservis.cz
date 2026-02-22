@@ -14,11 +14,11 @@ const particlesWrap = document.querySelector('.particles');
 if (year) year.textContent = new Date().getFullYear();
 
 if (particlesWrap) {
-  for (let i = 0; i < 18; i += 1) {
+  for (let i = 0; i < 24; i += 1) {
     const p = document.createElement('span');
     p.className = 'particle';
-    p.style.setProperty('--s', `${Math.random() * 5 + 3}px`);
-    p.style.setProperty('--d', `${Math.random() * 6 + 6}s`);
+    p.style.setProperty('--s', `${Math.random() * 4 + 2}px`);
+    p.style.setProperty('--d', `${Math.random() * 7 + 7}s`);
     p.style.top = `${Math.random() * 100}%`;
     p.style.left = `${Math.random() * 100}%`;
     particlesWrap.appendChild(p);
@@ -46,7 +46,7 @@ if (form && status) {
       status.textContent = 'Prosím vyplňte všechna povinná pole ve správném formátu.';
       return;
     }
-    status.textContent = 'Děkujeme, vaše poptávka je připravena k odeslání. Ozveme se co nejdříve.';
+    status.textContent = 'Děkujeme, poptávka je připravena k odeslání. Brzy se vám ozveme.';
     form.reset();
   });
 }
@@ -55,12 +55,14 @@ const animateCounter = (el) => {
   const target = Number(el.dataset.target || 0);
   const duration = 1200;
   let start;
-  const frame = (ts) => {
-    if (!start) start = ts;
-    const progress = Math.min((ts - start) / duration, 1);
+
+  const frame = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
     el.textContent = Math.floor(progress * target).toLocaleString('cs-CZ');
     if (progress < 1) requestAnimationFrame(frame);
   };
+
   requestAnimationFrame(frame);
 };
 
@@ -87,6 +89,7 @@ if (!isTouch) {
       const rotateX = (0.5 - y) * 8;
       item.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
+
     item.addEventListener('mouseleave', () => {
       item.style.transform = '';
     });
@@ -96,10 +99,12 @@ if (!isTouch) {
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     const selected = btn.dataset.filter;
+
     filterButtons.forEach((b) => {
       b.classList.remove('active');
       b.setAttribute('aria-selected', 'false');
     });
+
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
 
@@ -113,12 +118,14 @@ filterButtons.forEach((btn) => {
 if (typewriterEl) {
   const text = typewriterEl.dataset.text || '';
   let i = 0;
+
   const type = () => {
     if (i <= text.length) {
       typewriterEl.textContent = text.slice(0, i);
       i += 1;
-      setTimeout(type, 18);
+      setTimeout(type, 17);
     }
   };
+
   type();
 }
