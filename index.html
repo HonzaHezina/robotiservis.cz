@@ -950,6 +950,11 @@
             <div class="hero-content layer-1">
                 <h1 class="hero-title">Profesionální <span class="highlight glow-text">servis robotů</span> pro budoucnost</h1>
                 <p class="hero-description">Specializujeme se na opravy a údržbu průmyslových i neprůmyslových robotů včetně nejnovějších modelů jako Tesla Optimus. Nabízíme rychlý, spolehlivý a vysoce kvalifikovaný servis.</p>
+                <div class="hero-trust-chips">
+                    <span class="trust-chip">⚡ Reakce do 24 hodin</span>
+                    <span class="trust-chip">🛡️ Certifikovaní technici</span>
+                    <span class="trust-chip">🤖 Servis všech značek</span>
+                </div>
                 <a href="#services" class="cta-button glow-box">Zjistit více</a>
             </div>
             
@@ -2265,6 +2270,7 @@
                 <div class="contact-info">
                     <h3 class="contact-title">Spojte se s námi</h3>
                     <p class="contact-description">Ať už potřebujete naplánovat servisní zásah, konzultaci nebo máte jakýkoliv dotaz ohledně našich služeb, jsme vám k dispozici.</p>
+                    <div class="contact-note">Nejrychlejší cesta je telefon nebo formulář níže — odpovídáme obvykle během několika hodin.</div>
                     
                     <div class="contact-methods-container">
                         <div class="contact-method">
@@ -2278,7 +2284,7 @@
                             </div>
                             <div class="contact-method-info">
                                 <div class="contact-method-label">Telefon</div>
-                                <div class="contact-method-value typewriter">+420 725 410 785</div>
+                                <div class="contact-method-value typewriter">725410785</div>
                             </div>
                         </div>
                         
@@ -2288,6 +2294,10 @@
                                     <div class="email-line"></div>
                                 </div>
                                 <span>✉️</span>
+                            </div>
+                            <div class="contact-method-info">
+                                <div class="contact-method-label">E-mail</div>
+                                <div class="contact-method-value typewriter">JiriKhezina@gmail.com</div>
                             </div>
                         </div>
                         
@@ -2326,71 +2336,47 @@
                         <div class="scanner-line"></div>
                     </div>
                     
-                    <form id="contactForm" method="post" action="zpracovat-formular.php">
-                        <div class="form-group animated-form-group">
-                            <label class="form-label" for="name">Jméno</label>
+                    <form id="janagiContactForm" class="contact-form-inner" novalidate>
+                        <input type="hidden" name="site_id" value="hezina" />
+
+                        <div class="field form-group animated-form-group">
+                            <label class="form-label" for="cf_name">Jméno</label>
                             <div class="input-container">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Vaše jméno" required>
+                                <input id="cf_name" name="name" type="text" class="form-control" autocomplete="name" required />
                                 <div class="input-highlight"></div>
                             </div>
                         </div>
-                        
-                        <div class="form-group animated-form-group">
-                            <label class="form-label" for="email">Email</label>
+
+                        <div class="field form-group animated-form-group">
+                            <label class="form-label" for="cf_email">E-mail</label>
                             <div class="input-container">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Váš email" required>
+                                <input id="cf_email" name="email" type="email" class="form-control" autocomplete="email" inputmode="email" required />
                                 <div class="input-highlight"></div>
                             </div>
                         </div>
-                        
-                        <div class="form-group animated-form-group">
-                            <label class="form-label" for="phone">Telefon</label>
-                            <div class="input-container">
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Váš telefon">
-                                <div class="input-highlight"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group animated-form-group">
-                            <label class="form-label" for="service">Služba</label>
-                            <div class="select-container">
-                                <select class="form-control" id="service" name="service" required>
-                                    <option value="" selected disabled>Vyberte službu</option>
-                                    <option value="maintenance">Preventivní údržba</option>
-                                    <option value="repair">Diagnostika a opravy</option>
-                                    <option value="upgrade">Upgrady a aktualizace</option>
-                                    <option value="humanoid">Servis humanoidních robotů</option>
-                                    <option value="industrial">Průmyslové aplikace</option>
-                                    <option value="contract">Servisní smlouva</option>
-                                    <option value="other">Jiné</option>
-                                </select>
-                                <div class="select-arrow"></div>
-                                <div class="input-highlight"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group animated-form-group">
-                            <label class="form-label" for="message">Zpráva</label>
+
+                        <div class="field form-group animated-form-group">
+                            <label class="form-label" for="cf_message">Zpráva</label>
                             <div class="input-container textarea-container">
-                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Popište nám váš požadavek" required></textarea>
+                                <textarea id="cf_message" name="message" rows="6" class="form-control" required></textarea>
                                 <div class="input-highlight"></div>
                             </div>
                         </div>
-                        
-                        <!-- Anti-spam ochrana -->
-                        <input type="hidden" name="timestamp" value="<?php echo time(); ?>">
-                        <input type="text" name="honeypot" style="display:none">
-                        
-                        <div class="form-message" id="formMessage"></div>
-                        
-                        <button type="submit" class="cta-button submit-button">
-                            <span>Odeslat požadavek</span>
+
+                        <div class="hp" aria-hidden="true">
+                            <label for="cf_website">Website</label>
+                            <input id="cf_website" name="website" type="text" tabindex="-1" autocomplete="off" />
+                        </div>
+
+                        <button id="cf_submit" type="submit" class="cta-button submit-button">
+                            <span>Odeslat</span>
                             <div class="button-effects">
                                 <div class="button-particle"></div>
                                 <div class="button-particle"></div>
                                 <div class="button-particle"></div>
                             </div>
                         </button>
+                        <p id="cf_status" class="form-message" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
@@ -2704,6 +2690,34 @@
             font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.8);
         }
+
+        .hero-trust-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 0 28px;
+        }
+
+        .trust-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: rgba(240, 240, 240, 0.9);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        .contact-note {
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            background: rgba(0, 229, 255, 0.06);
+            color: rgba(240, 240, 240, 0.85);
+            line-height: 1.5;
+        }
         
         /* Vylepšení formuláře */
         .contact-form {
@@ -2788,6 +2802,31 @@
         
         .textarea-container {
             min-height: 120px;
+        }
+
+
+        .contact-form-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        #cf_status {
+            margin-top: 14px;
+            min-height: 1.4em;
+        }
+
+        #cf_submit[disabled] {
+            opacity: 0.75;
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* Animované tlačítko odesílání */
@@ -3135,111 +3174,68 @@
                 }
             }
             
-            // Obsluha kontaktního formuláře pomocí fetch API
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
+            // Obsluha kontaktního formuláře pro n8n webhook
+            const janagiForm = document.getElementById('janagiContactForm');
+            const statusEl = document.getElementById('cf_status');
+            const submitBtn = document.getElementById('cf_submit');
+
+            const setStatus = (message, kind = '') => {
+                if (!statusEl) return;
+                statusEl.textContent = message || '';
+                statusEl.className = `form-message${kind ? ` ${kind}` : ''}`;
+            };
+
+            const setBusy = (busy) => {
+                if (!submitBtn) return;
+                submitBtn.disabled = !!busy;
+                submitBtn.setAttribute('aria-busy', busy ? 'true' : 'false');
+            };
+
+            if (janagiForm) {
+                const ENDPOINT = 'https://n8n.janagi.org/webhook/contact';
+                const SITE_ID = 'hezina';
+                const TOKEN = '';
+
+                const siteInput = janagiForm.querySelector('input[name="site_id"]');
+                if (siteInput && SITE_ID) siteInput.value = SITE_ID;
+
+                janagiForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    
-                    // Validace formuláře
-                    if (!validateForm()) {
-                        return;
+                    setStatus('');
+                    setBusy(true);
+
+                    try {
+                        if (!janagiForm.checkValidity()) {
+                            janagiForm.reportValidity();
+                            setStatus('Prosím vyplňte všechna povinná pole.', 'error');
+                            return;
+                        }
+
+                        const fd = new FormData(janagiForm);
+
+                        if (String(fd.get('website') || '').trim()) {
+                            setBusy(false);
+                            return;
+                        }
+
+                        // if (TOKEN) fd.set('token', TOKEN);
+
+                        const response = await fetch(ENDPOINT, {
+                            method: 'POST',
+                            body: fd
+                        });
+
+                        if (!response.ok) throw new Error('Request failed');
+
+                        janagiForm.reset();
+                        if (siteInput && SITE_ID) siteInput.value = SITE_ID;
+                        setStatus('Díky! Zpráva byla odeslána.', 'success');
+                    } catch (error) {
+                        setStatus('Odeslání se nepovedlo. Zkuste to prosím znovu.', 'error');
+                    } finally {
+                        setBusy(false);
                     }
-                    
-                    // Vytvoříme loading overlay
-                    const loadingOverlay = document.createElement('div');
-                    loadingOverlay.className = 'form-loading';
-                    const spinner = document.createElement('div');
-                    spinner.className = 'loading-spinner';
-                    loadingOverlay.appendChild(spinner);
-                    contactForm.appendChild(loadingOverlay);
-                    loadingOverlay.classList.add('active');
-                    
-                    // Získání dat formuláře
-                    const formData = new FormData(contactForm);
-                    
-                    // Odeslání pomocí fetch API
-                    fetch('zpracovat-formular.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Chyba sítě nebo serveru.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const messageElement = document.getElementById('formMessage');
-                        if (data.success) {
-                            messageElement.textContent = data.message || 'Vaše zpráva byla úspěšně odeslána. Děkujeme!';
-                            messageElement.className = 'form-message success';
-                            contactForm.reset();
-                        } else {
-                            messageElement.textContent = data.message || 'Došlo k chybě při odesílání formuláře. Zkuste to znovu později.';
-                            messageElement.className = 'form-message error';
-                        }
-                    })
-                    .catch(error => {
-                        const messageElement = document.getElementById('formMessage');
-                        messageElement.textContent = 'Došlo k chybě při odesílání formuláře. Zkuste to znovu později.';
-                        messageElement.className = 'form-message error';
-                        console.error('Chyba:', error);
-                    })
-                    .finally(() => {
-                        // Odstranění loading overlay
-                        if (loadingOverlay) {
-                            loadingOverlay.classList.remove('active');
-                            setTimeout(() => {
-                                if (loadingOverlay.parentElement) {
-                                    loadingOverlay.parentElement.removeChild(loadingOverlay);
-                                }
-                            }, 300);
-                        }
-                    });
                 });
-                
-                function validateForm() {
-                    let isValid = true;
-                    const requiredFields = contactForm.querySelectorAll('[required]');
-                    
-                    requiredFields.forEach(field => {
-                        if (!field.value.trim()) {
-                            isValid = false;
-                            field.classList.add('is-invalid');
-                        } else {
-                            field.classList.remove('is-invalid');
-                        }
-                    });
-                    
-                    // Validace emailu
-                    const emailField = contactForm.querySelector('input[type="email"]');
-                    if (emailField && emailField.value) {
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailRegex.test(emailField.value)) {
-                            isValid = false;
-                            emailField.classList.add('is-invalid');
-                        }
-                    }
-                    
-                    // Validace telefonu (pokud je vyplněn)
-                    const phoneField = contactForm.querySelector('input[type="tel"]');
-                    if (phoneField && phoneField.value) {
-                        const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,6}$/;
-                        if (!phoneRegex.test(phoneField.value)) {
-                            isValid = false;
-                            phoneField.classList.add('is-invalid');
-                        }
-                    }
-                    
-                    if (!isValid) {
-                        const messageElement = document.getElementById('formMessage');
-                        messageElement.textContent = 'Prosím, vyplňte všechna povinná pole ve správném formátu.';
-                        messageElement.className = 'form-message error';
-                    }
-                    
-                    return isValid;
-                }
             }
         });
     </script>
